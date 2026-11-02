@@ -1,30 +1,22 @@
-# MiniTube — Backend API
+# MiniTube Backend API
 
-MiniTube — YouTube uslubidagi video platforma uchun REST API.
+MiniTube — YouTube uslubidagi video platforma uchun REST API backend loyihasi.
 
 ## Texnologiyalar
 
 - Node.js
 - Express.js
 - PostgreSQL
-- JWT Authentication
-- Bcrypt
-- Joi Validation
+- JWT
+- bcrypt
+- Joi
 - Nodemailer
 
 ## Loyihani ishga tushirish
 
-### 1. Database — PostgreSQL
+### 1. Database
 
-PostgreSQL o‘rnatilgan bo‘lishi kerak.
-
-Avval `mini_tube` nomli database yarating:
-
-```sql
-CREATE DATABASE mini_tube;
-```
-
-Backend papkasida terminalni ochib, database sxemasini ishga tushiring:
+PostgreSQL’da `mini_tube` nomli database yarating va loyiha papkasida quyidagi buyruqni bajaring:
 
 ```bash
 psql -d mini_tube -f schema.sql
@@ -32,19 +24,13 @@ psql -d mini_tube -f schema.sql
 
 ### 2. Backend
 
-Backend papkasiga kiring:
-
-```bash
-cd backend
-```
-
 Kerakli paketlarni o‘rnating:
 
 ```bash
 npm install
 ```
 
-`.env.example` faylidan nusxa olib, `.env` nomli fayl yarating va PostgreSQL, JWT hamda Gmail App Password ma'lumotlarini kiriting.
+`.env.example` faylidan `.env` yarating va kerakli qiymatlarni kiriting.
 
 Serverni ishga tushiring:
 
@@ -52,33 +38,11 @@ Serverni ishga tushiring:
 npm run dev
 ```
 
-Backend manzili:
-
-`http://localhost:4000`
+Backend manzili: `http://localhost:4000`
 
 ### 3. Frontend
 
-Frontend papkasiga kiring:
-
-```bash
-cd frontend
-```
-
-Kerakli paketlarni o‘rnating:
-
-```bash
-npm install
-```
-
-Frontendni ishga tushiring:
-
-```bash
-npm run dev
-```
-
-Frontend manzili:
-
-`http://localhost:5173`
+Ushbu topshiriqda frontend talab qilinmaydi. API endpointlarini Postman orqali tekshirish mumkin.
 
 ## API Endpoints
 
@@ -86,26 +50,12 @@ Frontend manzili:
 |---|---|---|
 | POST | `/api/auth/register` | Ro‘yxatdan o‘tish |
 | POST | `/api/auth/login` | Tizimga kirish |
-| GET | `/api/videos` | Barcha videolar |
-| GET | `/api/videos/:id` | Bitta videoni olish |
+| GET | `/api/videos` | Videolar ro‘yxati |
+| GET | `/api/videos/:id` | Bitta video |
 | POST | `/api/videos` | Video qo‘shish |
-| GET | `/api/videos/:id/comments` | Izohlarni olish |
-| POST | `/api/videos/:id/comments` | Izoh qo‘shish |
-
-## Authentication
-
-Himoyalangan endpointlar uchun JWT token talab qilinadi.
-
-Authorization header:
-
-```text
-Authorization: Bearer YOUR_TOKEN
-```
-
-## Database
-
-Loyihada PostgreSQL ishlatiladi. Ma'lumotlar `users`, `videos` va `comments` jadvallarida saqlanadi.
+| GET | `/api/videos/:id/comments` | Izohlar ro‘yxati |
+| POST | `/api/videos/:id/comments` | Izoh qoldirish |
 
 ## Eslatma
 
-`.env` va `node_modules` GitHub repository'ga yuklanmaydi. `.env.example` fayli loyiha sozlamalarini ko‘rsatish uchun taqdim etiladi.
+`.env` va `node_modules` GitHub’ga yuklanmaydi. `.env.example` repozitoriyada mavjud bo‘lishi kerak.
